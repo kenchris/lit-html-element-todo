@@ -9,16 +9,22 @@ export class TodoItem extends LitElement {
     }
   }
 
-  handleOnRemoved = _ => this.dispatchEvent(new CustomEvent("removed", { detail: this.index }));
-  handleOnChecked = _ => this.dispatchEvent(new CustomEvent("checked", { detail: this.index }));
+  handleOnRemoved() {
+      this.dispatchEvent(new CustomEvent("removed", { detail: this.index }));
+  }
+  handleOnChecked() {
+    this.dispatchEvent(new CustomEvent("checked", { detail: this.index }))
+  }
+
+
 
   render({ checked, text }) {
     return html`
       <link rel="stylesheet" href="todo-item.css">
       <li class$=${checked ? 'completed' : ''}>
-        <input type="checkbox" checked$=${checked} on-change=${this.handleOnChecked}></input>
+        <input type="checkbox" checked$=${checked} on-change=${this.handleOnChecked.bind(this)}></input>
         <label>${text}</label>
-        <button on-click=${this.handleOnRemoved}>x</button>
+        <button on-click=${this.handleOnRemoved.bind(this)}>x</button>
       </li>
     `;
   }
