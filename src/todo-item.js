@@ -10,13 +10,11 @@ export class TodoItem extends LitElement {
   }
 
   handleOnRemoved() {
-      this.dispatchEvent(new CustomEvent("removed", { detail: this.index }));
+    this.dispatchEvent(new CustomEvent("removed", { detail: this.index }));
   }
   handleOnChecked() {
     this.dispatchEvent(new CustomEvent("checked", { detail: this.index }))
   }
-
-
 
   render({ checked, text }) {
     return html`

@@ -7,15 +7,15 @@ export class TodoInput extends LitElement {
   }
 
   handleInputChange(ev) {
-      this.value = ev.target.value;
+    this.value = ev.target.value;
   }
 
   handleOnSubmit(ev) {
-      ev.preventDefault();
-      if (!this.value) return;
-      this.dispatchEvent(new CustomEvent("submit", { detail: this.value }));
-      this.value = '';
-      this.invalidate();
+    ev.preventDefault();
+    if (!this.value) return;
+    this.dispatchEvent(new CustomEvent("submit", { detail: this.value }));
+    this.value = '';
+    this.invalidate();
   }
 
   render() {
